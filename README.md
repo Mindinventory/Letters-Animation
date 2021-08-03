@@ -18,20 +18,20 @@
  
 ## Table of content :-
 
-- [Description](#description)
-- [How to add in your project](#how-to-add-in-your-project)
-- [Requirement](#requirement)
-- [License](#license)
+-  [Description](#description)
+-  [How to add in your project](#how-to-add-in-your-project)
+-  [Requirement](#requirement)
+-  [License](#license)
  
 ## Description
 Letters animation allows you to click on different letters and accrodingly it will animate letters in a cool way. It has very attractive ui and is very easy to use.
 
 - <b>Animation used</b>
 
-1. ```UIView.animate(withDuration: , delay: , options: .curveEaseInOut, animations: , completion: )```
-2. ```CGAffineTransform(scaleX: , y: )```
-3. ```CGAffineTransform(translationX: , y: )```
-4. ```UIView.transition(with: , duration: , options: .transitionFlipFromRight, animations: , completion: )```
+1.  ```UIView.animate(withDuration: , delay: , options: .curveEaseInOut, animations: , completion: )```
+2.  ```CGAffineTransform(scaleX: , y: )```
+3.  ```CGAffineTransform(translationX: , y: )```
+4.  ```UIView.transition(with: , duration: , options: .transitionFlipFromRight, animations: , completion: )```
 
 
 ## How to add in your project
