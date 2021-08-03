@@ -7,17 +7,16 @@
 
 import UIKit
 
-// MARK: - Home
-// MARK: -
+// MARK: - Home -
 struct HomeCollection {
-    
+
     let image: UIImage
     let title: String
     let subTitle: String
 }
 
 enum HomeSelection: String {
-    
+
     case numbers = "Numbers"
     case reading = "Reading"
     case shapes = "Shapes"
@@ -26,8 +25,7 @@ enum HomeSelection: String {
     case settings = "Settings"
 }
 
-// MARK: - Letters
-// MARK: -
+// MARK: - Letters -
 struct SmallLetters {
     let image: UIImage
 }

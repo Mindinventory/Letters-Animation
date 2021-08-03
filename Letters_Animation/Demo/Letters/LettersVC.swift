@@ -8,7 +8,7 @@
 import UIKit
 
 final class LettersVC: UIViewController {
-    
+
     //MARK: IBOutlet
     @IBOutlet weak var vwAnimate2: UIView!
     @IBOutlet weak var vwAnimate1: UIView!
@@ -29,7 +29,7 @@ final class LettersVC: UIViewController {
     @IBOutlet weak private var constCollSmallLettersBottom: NSLayoutConstraint!
     @IBOutlet weak var constLetterMeaning2Leading: NSLayoutConstraint!
     @IBOutlet weak var constLetterMeaning1Leading: NSLayoutConstraint!
-    
+
     //MARK: Properties
     let smallLettersData = [SmallLetters(image: UIImage(named: "ic_bigA") ?? UIImage()),
                             SmallLetters(image: UIImage(named: "ic_smallB") ?? UIImage()),
@@ -57,55 +57,51 @@ final class LettersVC: UIViewController {
                             SmallLetters(image: UIImage(named: "ic_smallX") ?? UIImage()),
                             SmallLetters(image: UIImage(named: "ic_smallY") ?? UIImage()),
                             SmallLetters(image: UIImage(named: "ic_smallZ") ?? UIImage())]
-    
+
     //MARK: ViewLifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configure()
         setConstraints()
     }
 }
 
-// MARK: - Configure
-// MARK: -
+// MARK: - Configure -
 extension LettersVC {
-    
+
     // Configure Views
     private func configure() {
-        
+
         lblSmallLetters.changeFontSize(size: CScreenWidth * (36/414), weight: .regular)
         lblMatch.changeFontSize(size: CScreenWidth * (20/414), weight: .light)
         lblLetterMeaning1.changeFontSize(size: CScreenWidth * (30/414), weight: .regular)
         lblLetterMeaning2.changeFontSize(size: CScreenWidth * (30/414), weight: .regular)
         setAttributedTextOnLables()
-        
+
         btnBack.setAlphaValue(alpha: 0)
         lblSmallLetters.setAlphaValue(alpha: 0)
         lblMatch.setAlphaValue(alpha: 0)
-        
+
         constBtnBackTop.constant = 150
         constCollSmallLettersTop.constant = CScreenHeight
         constCollSmallLettersBottom.priority = .defaultLow
-        
+
         configureLettersMeaningsViews()
-        
+
         CMainThread.asyncAfter(deadline: .now() + 0.1, execute: {
-            
-            self.animateViews(btnBack: self.btnBack, lblSmallLetters: self.lblSmallLetters, lblMatch: self.lblMatch,
-                              constBtnBackTop: self.constBtnBackTop,
-                              constCollSmallLettersTop: self.constCollSmallLettersTop,
-                              constCollSmallLettersBottom: self.constCollSmallLettersBottom)
+            self.animateViews(btnBack: self.btnBack, lblSmallLetters: self.lblSmallLetters,
+                              lblMatch: self.lblMatch, constraint: (btnBackTop: self.constBtnBackTop, collSmallLettersTop: self.constCollSmallLettersTop, collSmallLettersBottom: self.constCollSmallLettersBottom))
         })
     }
-    
+
     // Set Constraints
     private func setConstraints() {
-        
+
         constBtnBackLeading.constant = CScreenWidth * (30/414)
         constCollSmallLettersWidth.constant = CScreenWidth * (148/414)
     }
-    
+
     // Set Attributed Texts on Labels
     private func setAttributedTextOnLables() {
         
@@ -118,7 +114,6 @@ extension LettersVC {
                               range: NSRange(location: 5, length: 3))
         attrStr1.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414),
                                                               weight: .black), range: NSRange(location: 1, length: 1))
-        
         lblLetterMeaning1.attributedText = attrStr1
         
         let attrStr2 = NSMutableAttributedString(string: lblLetterMeaning2.text ?? "")
@@ -130,12 +125,11 @@ extension LettersVC {
                               range: NSRange(location: 5, length: 3))
         attrStr2.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414),
                                                               weight: .black), range: NSRange(location: 1, length: 1))
-        
         lblLetterMeaning2.attributedText = attrStr2
     }
-    
+
     private func configureLettersMeaningsViews() {
-        
+
         imgBigLetter1.isHidden = true
         imgBigLetter2.isHidden = true
         lblLetterMeaning1.isHidden = true
@@ -143,12 +137,10 @@ extension LettersVC {
     }
 }
 
-// MARK: - Button's Actions
-// MARK: -
+// MARK: - Button's Actions -
 extension LettersVC {
-    
+
     @IBAction private func onBack(_ sender: UIButton) {
-        
         self.navigationController?.popViewController(animated: true)
     }
 }

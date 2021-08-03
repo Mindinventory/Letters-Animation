@@ -8,16 +8,14 @@
 import UIKit
 
 final class LettersCell: UICollectionViewCell {
-    
+
     @IBOutlet weak private var imgSmallLetters: UIImageView!
 }
 
-// MARK: - Configure
-// MARK: -
+// MARK: - Configure -
 extension LettersCell {
-    
+
     func configureCell(img: UIImage) {
-        
         imgSmallLetters.image = img
     }
 }

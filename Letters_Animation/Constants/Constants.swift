@@ -17,4 +17,4 @@ let CMainThread = DispatchQueue.main
 
 let CMainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-let rootVC = UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.rootViewController
+let rootVC = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController

@@ -8,39 +8,33 @@
 import UIKit
 
 extension LettersVC {
-    
+
     func animateViews(btnBack: UIButton, lblSmallLetters: UILabel, lblMatch: UILabel,
-                      constBtnBackTop: NSLayoutConstraint, constCollSmallLettersTop: NSLayoutConstraint,
-                      constCollSmallLettersBottom: NSLayoutConstraint) {
-        
+                      constraint: (btnBackTop: NSLayoutConstraint, collSmallLettersTop: NSLayoutConstraint,
+                                   collSmallLettersBottom: NSLayoutConstraint)) {
+
         UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseInOut, animations: { [weak self] in
-            
+
             guard let `self` = self else { return }
-            
+
             btnBack.setAlphaValue(alpha: 1)
             lblSmallLetters.setAlphaValue(alpha: 1)
             lblMatch.setAlphaValue(alpha: 1)
-            constBtnBackTop.constant = 11
-            constCollSmallLettersTop.constant = 0
-            constCollSmallLettersBottom.priority = .defaultHigh
-            
+            constraint.btnBackTop.constant = 11
+            constraint.collSmallLettersTop.constant = 0
+            constraint.collSmallLettersBottom.priority = .defaultHigh
             self.view.layoutIfNeeded()
-            
             self.animateSmallLettersCollectionView()
-            
         }, completion: nil)
     }
-    
+
     // Animate and reload CollectionView
     func animateSmallLettersCollectionView() {
-        
+
         UIView.animate(withDuration: 1, delay: 0.2, options: .curveEaseInOut, animations: { [weak self] in
-            
             guard let `self` = self else { return }
-            
             self.collSmallLetters.smallletterImages = self.smallLettersData
             self.collSmallLetters.reloadData()
-            
         }, completion: nil)
     }
 }
