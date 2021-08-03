@@ -26,7 +26,7 @@
 ## Description
 Letters animation allows you to click on different letters and accrodingly it will animate letters in a cool way. It has very attractive ui and is very easy to use.
 
-- <b>Animation used</b>
+<b>Animation used</b>
 
 1.  ```UIView.animate(withDuration: , delay: , options: .curveEaseInOut, animations: , completion: )```
 2.  ```CGAffineTransform(scaleX: , y: )```
