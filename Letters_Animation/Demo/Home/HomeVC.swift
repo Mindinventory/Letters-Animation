@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeVC: UIViewController {
 
-    //MARK:... IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet weak private var imgProfile: UIImageView!
     @IBOutlet weak private var btnMenu: UIButton!
     @IBOutlet weak private var stackTopBtns: UIStackView!
@@ -22,7 +22,7 @@ final class HomeVC: UIViewController {
     @IBOutlet weak private var constImgProfileTop: NSLayoutConstraint!
     @IBOutlet weak private var constCollHomeTop: NSLayoutConstraint!
 
-    //MARK:... Properties
+    // MARK: - Properties
     let homeData = [HomeCollection(image: UIImage(named: "ic_numbers") ?? UIImage(), title: "Numbers",
                                    subTitle: "(números)"),
                     HomeCollection(image: UIImage(named: "ic_book") ?? UIImage(), title: "Reading",
@@ -36,7 +36,7 @@ final class HomeVC: UIViewController {
                     HomeCollection(image: UIImage(named: "ic_settings") ?? UIImage(), title: "Settings",
                                    subTitle: "(Ajustes de aplicación)")]
 
-    //MARK: View LifeCycle methods
+    // MARK: - View LifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
 

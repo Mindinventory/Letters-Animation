@@ -82,7 +82,7 @@ extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         }
     }
 
-    //MARK: Flow Layout Delegate Methods -
+    // MARK: - Flow Layout Delegate Methods -
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CScreenWidth * (177/414) - 12, height: CScreenWidth * (200/414))

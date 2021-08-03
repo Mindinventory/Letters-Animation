@@ -9,7 +9,7 @@ import UIKit
 
 final class LettersVC: UIViewController {
 
-    //MARK: IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var vwAnimate2: UIView!
     @IBOutlet weak var vwAnimate1: UIView!
     @IBOutlet weak var vw2: UIView!
@@ -30,7 +30,7 @@ final class LettersVC: UIViewController {
     @IBOutlet weak var constLetterMeaning2Leading: NSLayoutConstraint!
     @IBOutlet weak var constLetterMeaning1Leading: NSLayoutConstraint!
 
-    //MARK: Properties
+    // MARK: - Properties
     let smallLettersData = [SmallLetters(image: UIImage(named: "ic_bigA") ?? UIImage()),
                             SmallLetters(image: UIImage(named: "ic_smallB") ?? UIImage()),
                             SmallLetters(image: UIImage(named: "ic_smallC") ?? UIImage()),
@@ -58,7 +58,7 @@ final class LettersVC: UIViewController {
                             SmallLetters(image: UIImage(named: "ic_smallY") ?? UIImage()),
                             SmallLetters(image: UIImage(named: "ic_smallZ") ?? UIImage())]
 
-    //MARK: ViewLifeCycle Methods
+    // MARK: - ViewLifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,7 +91,7 @@ extension LettersVC {
 
         CMainThread.asyncAfter(deadline: .now() + 0.1, execute: {
             self.animateViews(btnBack: self.btnBack, lblSmallLetters: self.lblSmallLetters,
-                              lblMatch: self.lblMatch, constraint: (btnBackTop: self.constBtnBackTop, collSmallLettersTop: self.constCollSmallLettersTop, collSmallLettersBottom: self.constCollSmallLettersBottom))
+                              lblMatch: self.lblMatch, collSmallLettersBottom: self.constCollSmallLettersBottom, constraint: (btnBackTop: self.constBtnBackTop, collSmallLettersTop: self.constCollSmallLettersTop))
         })
     }
 
@@ -104,7 +104,7 @@ extension LettersVC {
 
     // Set Attributed Texts on Labels
     private func setAttributedTextOnLables() {
-        
+
         let attrStr1 = NSMutableAttributedString(string: lblLetterMeaning1.text ?? "")
         attrStr1.addAttribute(.foregroundColor, value: UIColor.init(red: 255/255,
                                                                     green: 111/255, blue: 77/255, alpha: 1),

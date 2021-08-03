@@ -9,9 +9,8 @@ import UIKit
 
 extension LettersVC {
 
-    func animateViews(btnBack: UIButton, lblSmallLetters: UILabel, lblMatch: UILabel,
-                      constraint: (btnBackTop: NSLayoutConstraint, collSmallLettersTop: NSLayoutConstraint,
-                                   collSmallLettersBottom: NSLayoutConstraint)) {
+    func animateViews(btnBack: UIButton, lblSmallLetters: UILabel, lblMatch: UILabel, collSmallLettersBottom: NSLayoutConstraint,
+                      constraint: (btnBackTop: NSLayoutConstraint, collSmallLettersTop: NSLayoutConstraint)) {
 
         UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseInOut, animations: { [weak self] in
 
@@ -22,7 +21,7 @@ extension LettersVC {
             lblMatch.setAlphaValue(alpha: 1)
             constraint.btnBackTop.constant = 11
             constraint.collSmallLettersTop.constant = 0
-            constraint.collSmallLettersBottom.priority = .defaultHigh
+            collSmallLettersBottom.priority = .defaultHigh
             self.view.layoutIfNeeded()
             self.animateSmallLettersCollectionView()
         }, completion: nil)
