@@ -48,4 +48,4 @@ Letters animation lets you allow to click on different letters and accrodingly a
 
 ## LICENSE!
 
-GenerateDynamicCustomForm is [MIT-licensed](/LICENSE).
+Letters Animation is [MIT-licensed](/LICENSE).
