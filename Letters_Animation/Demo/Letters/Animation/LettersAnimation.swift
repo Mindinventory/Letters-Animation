@@ -9,7 +9,8 @@ import UIKit
 
 extension LettersVC {
 
-    func animateViews(btnBack: UIButton, lblSmallLetters: UILabel, lblMatch: UILabel, collSmallLettersBottom: NSLayoutConstraint,
+    func animateViews(btnBack: UIButton, lblSmallLetters: UILabel,
+                      lblMatch: UILabel, collSmallLettersBottom: NSLayoutConstraint,
                       constraint: (btnBackTop: NSLayoutConstraint, collSmallLettersTop: NSLayoutConstraint)) {
 
         UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseInOut, animations: { [weak self] in

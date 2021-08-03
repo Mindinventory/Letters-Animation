@@ -115,7 +115,7 @@ extension LettersVC {
         attrStr1.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414),
                                                               weight: .black), range: NSRange(location: 1, length: 1))
         lblLetterMeaning1.attributedText = attrStr1
-        
+
         let attrStr2 = NSMutableAttributedString(string: lblLetterMeaning2.text ?? "")
         attrStr2.addAttribute(.foregroundColor, value: UIColor.init(red: 151/255,
                                                                     green: 107/255, blue: 207/255, alpha: 1),

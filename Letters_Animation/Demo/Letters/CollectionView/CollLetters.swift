@@ -8,7 +8,7 @@
 import UIKit
 
 final class CollLetters: UICollectionView {
-    
+
     var smallletterImages = [SmallLetters]()
     
     private var tapCount = 0
@@ -21,7 +21,7 @@ final class CollLetters: UICollectionView {
 
 // MARK: - Configure -
 extension CollLetters {
-    
+
     private func configure() {
         
         dataSource = self
@@ -32,7 +32,7 @@ extension CollLetters {
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout Methods -
 extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return smallletterImages.count
     }
