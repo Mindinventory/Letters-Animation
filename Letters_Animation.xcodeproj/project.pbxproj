@@ -170,8 +170,8 @@
 		DE2D3A6926B7BE430042ED4E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DE2D3A6A26B7BE430042ED4E /* HomeCell.swift */,
 				DE2D3A6B26B7BE430042ED4E /* HomeCell.xib */,
+				DE2D3A6A26B7BE430042ED4E /* HomeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";

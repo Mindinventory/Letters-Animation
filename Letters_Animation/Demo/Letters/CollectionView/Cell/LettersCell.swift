@@ -12,8 +12,8 @@ final class LettersCell: UICollectionViewCell {
     @IBOutlet weak private var imgSmallLetters: UIImageView!
 }
 
-//MARK: - Configure
-//MARK: -
+// MARK: - Configure
+// MARK: -
 extension LettersCell {
     
     func configureCell(img: UIImage) {

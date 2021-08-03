@@ -11,7 +11,9 @@ final class CollHome: UICollectionView {
     
     var homeData = [HomeCollection]()
     
-    private let images = [UIImage(named: "ic_Big1"), UIImage(named: "ic_read"), UIImage(named: "ic_read"), UIImage(named: "ic_bigA"), UIImage(named: "ic_read"), UIImage(named: "ic_read")]
+    private let images = [UIImage(named: "ic_Big1"), UIImage(named: "ic_read"),
+                          UIImage(named: "ic_read"), UIImage(named: "ic_bigA"),
+                          UIImage(named: "ic_read"), UIImage(named: "ic_read")]
     
     private let animationDuration: Double = 1.0
     private let delayBase: Double = 0.4
@@ -25,8 +27,8 @@ final class CollHome: UICollectionView {
     }
 }
 
-//MARK: - Configure
-//MARK: -
+// MARK: - Configure
+// MARK: -
 extension CollHome {
     
     private func configure() {
@@ -37,8 +39,8 @@ extension CollHome {
     }
 }
 
-//MARK: - UICollectionView DataSource and Delegate Methods.
-//MARK: -
+// MARK: - UICollectionView DataSource and Delegate Methods.
+// MARK: -
 extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,9 +48,11 @@ extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         return homeData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let homeCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell {
+        if let homeCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier,
+                                                             for: indexPath) as? HomeCell {
             
             let data = homeData[indexPath.row]
             homeCell.configureCell(img: data.image, title: data.title, subTitle: data.subTitle)
@@ -109,8 +113,8 @@ extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     }
 }
 
-//MARK: - Helper / Navigation Methods
-//MARK: -
+// MARK: - Helper / Navigation Methods
+// MARK: -
 extension CollHome {
     
     private func checkSelectedCell(lbltext: String, homeCell: HomeCell, row: Int) {

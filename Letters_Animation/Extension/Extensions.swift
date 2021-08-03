@@ -7,8 +7,8 @@
 
 import UIKit
 
-//MARK: - UIStoryboard
-//MARK: -
+// MARK: - UIStoryboard
+// MARK: -
 protocol IdentifierType {
     associatedtype Identifier: RawRepresentable
 }
@@ -23,13 +23,13 @@ extension UIStoryboard: IdentifierType {
         case readingVC = "ReadingVC"
     }
 
-    func instantiateViewControllerWithIdentifier(identifier:Identifier) -> UIViewController {
+    func instantiateViewControllerWithIdentifier(identifier: Identifier) -> UIViewController {
         return self.instantiateViewController(withIdentifier: identifier.rawValue)
     }
 }
 
-//MARK: - UICollectionViewCells' Nib and Identifier.
-//MARK: -
+// MARK: - UICollectionViewCells' Nib and Identifier.
+// MARK: -
 extension UICollectionViewCell {
     
     static var nib: UINib {
@@ -41,8 +41,8 @@ extension UICollectionViewCell {
     }
 }
 
-//MARK: - UIView
-//MARK: -
+// MARK: - UIView
+// MARK: -
 extension UIView {
     
     func setAlphaValue(alpha: CGFloat) {
@@ -54,8 +54,8 @@ extension UIView {
     }
 }
 
-//MARK: - UILabel
-//MARK: -
+// MARK: - UILabel
+// MARK: -
 extension UILabel {
     
     // Change Label's Font size.
@@ -64,8 +64,8 @@ extension UILabel {
     }
 }
 
-//MARK: - UILabel
-//MARK: -
+// MARK: - UILabel
+// MARK: -
 extension UITextField {
     
     func configureTxtField(cornRadius: CGFloat, placeHolder: String, leftSpacing: CGFloat, placeholderColor: UIColor) {
@@ -73,15 +73,15 @@ extension UITextField {
         self.roundedCorners(radius: (CScreenWidth * (cornRadius/414)))
         self.layer.masksToBounds = true
         self.attributedPlaceholder = NSAttributedString(string: placeHolder,
-                                                        attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+                                                        attributes: [.foregroundColor: placeholderColor])
         self.font = UIFont.systemFont(ofSize: CScreenWidth * (16/414), weight: .semibold)
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: leftSpacing, height: self.frame.height))
         self.leftViewMode = .always
     }
 }
 
-//MARK: - UIButton
-//MARK: -
+// MARK: - UIButton
+// MARK: -
 extension UIButton {
     
     func changeFontSize(size: CGFloat, weight: UIFont.Weight) {
@@ -89,11 +89,11 @@ extension UIButton {
     }
 }
 
-//MARK: - Extension for Getting Top View Controller
-//MARK: -
+// MARK: - Extension for Getting Top View Controller
+// MARK: -
 extension UIApplication {
     
-    class func topViewController(controller: UIViewController? = UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.rootViewController) -> UIViewController? {
+    class func topViewController(controller: UIViewController? = rootVC) -> UIViewController? {
         
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
@@ -112,8 +112,8 @@ extension UIApplication {
     }
 }
 
-//MARK: - UIDevice
-//MARK: -
+// MARK: - UIDevice
+// MARK: -
 extension UIDevice {
     
     // Check If iPhone has Notch

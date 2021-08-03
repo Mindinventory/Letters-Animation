@@ -9,7 +9,7 @@ import UIKit
 
 final class LoginVC: UIViewController {
     
-    //MARK: IBOutlets
+    // MARK: IBOutlets
     @IBOutlet weak private var txtPassword: UITextField!
     @IBOutlet weak private var txtUserName: UITextField!
     @IBOutlet weak private var imgKidszooLogo: UIImageView!
@@ -23,7 +23,7 @@ final class LoginVC: UIViewController {
     @IBOutlet weak private var constImgDinosaurBottom: NSLayoutConstraint!
     @IBOutlet weak private var constImgDinosaurHeight: NSLayoutConstraint!
     
-    //MARK: View LifeCycle methods
+    // MARK: View LifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +31,8 @@ final class LoginVC: UIViewController {
     }
 }
 
-//MARK: - Configure
-//MARK: -
+// MARK: - Configure
+// MARK: -
 extension LoginVC {
     
     private func configure() {
@@ -49,8 +49,12 @@ extension LoginVC {
         
         btnGo.roundedCorners(radius: (CScreenWidth * (25/414)))
         
-        txtUserName.configureTxtField(cornRadius: 25, placeHolder: "Username", leftSpacing: 30, placeholderColor: UIColor.init(red: 139/255, green: 139/255, blue: 139/255, alpha: 1.0))
-        txtPassword.configureTxtField(cornRadius: 25, placeHolder: "Password", leftSpacing: 30, placeholderColor: UIColor.init(red: 139/255, green: 139/255, blue: 139/255, alpha: 1.0))
+        txtUserName.configureTxtField(cornRadius: 25, placeHolder: "Username",
+                                      leftSpacing: 30, placeholderColor: UIColor.init(red: 139/255,
+                                                                                      green: 139/255, blue: 139/255, alpha: 1.0))
+        txtPassword.configureTxtField(cornRadius: 25, placeHolder: "Password",
+                                      leftSpacing: 30, placeholderColor: UIColor.init(red: 139/255,
+                                                                                      green: 139/255, blue: 139/255, alpha: 1.0))
         
         lblDontAccount.changeFontSize(size: (CScreenWidth * (16/414)), weight: .bold)
         btnGo.changeFontSize(size: (CScreenWidth * (24/414)), weight: .heavy)
@@ -73,8 +77,8 @@ extension LoginVC {
     }
 }
 
-//MARK: - Button's Actions
-//MARK: -
+// MARK: - Button's Actions
+// MARK: -
 extension LoginVC {
     
     @IBAction private func onBtnGo(_ sender: UIButton) {

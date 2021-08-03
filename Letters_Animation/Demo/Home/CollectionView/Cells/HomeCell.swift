@@ -25,8 +25,8 @@ final class HomeCell: UICollectionViewCell, CAAnimationDelegate {
     }
 }
 
-//MARK: - Configure
-//MARK: -
+// MARK: - Configure
+// MARK: -
 extension HomeCell {
     
     func configureCell(img: UIImage, title: String, subTitle: String) {
@@ -49,7 +49,8 @@ extension HomeCell {
         lblSubTitle.isHidden = true
         imgBigSmallLetters.image = img
         
-        UIView.transition(with: self, duration: 0.8, options: .transitionFlipFromRight, animations: nil, completion: { [weak self] _ in
+        UIView.transition(with: self, duration: 0.8, options: .transitionFlipFromRight,
+                          animations: nil, completion: { [weak self] _ in
             
             self?.superview?.isUserInteractionEnabled = true
         })

@@ -44,7 +44,9 @@ final class HomeVC: UIViewController {
         
         CMainThread.asyncAfter(deadline: .now() + 0.1, execute: {
             
-            self.animateViews(stackTopBtns: self.stackTopBtns, stackLblNames: self.stackLblNames, imgProfile: self.imgProfile, constImgProfileTop: self.constImgProfileTop, conststackTopbtnsTop: self.conststackTopbtnsTop)
+            self.animateViews(stackTopBtns: self.stackTopBtns, stackLblNames: self.stackLblNames,
+                              imgProfile: self.imgProfile, constImgProfileTop: self.constImgProfileTop,
+                              conststackTopbtnsTop: self.conststackTopbtnsTop)
         })
     }
     
@@ -55,8 +57,8 @@ final class HomeVC: UIViewController {
     }
 }
 
-//MARK: - Configure
-//MARK: -
+// MARK: - Configure
+// MARK: -
 extension HomeVC {
     
     private func configure() {

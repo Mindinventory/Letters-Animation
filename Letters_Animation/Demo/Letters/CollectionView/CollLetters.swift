@@ -20,8 +20,8 @@ final class CollLetters: UICollectionView {
     }
 }
 
-//MARK: - Configure
-//MARK: -
+// MARK: - Configure
+// MARK: -
 extension CollLetters {
     
     private func configure() {
@@ -32,8 +32,8 @@ extension CollLetters {
     }
 }
 
-//MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout Methods
-//MARK: -
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout Methods
+// MARK: -
 extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,14 +41,16 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return smallletterImages.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let SmallLettersCell = collectionView.dequeueReusableCell(withReuseIdentifier: LettersCell.identifier, for: indexPath) as? LettersCell {
+        if let smallLettersCell = collectionView.dequeueReusableCell(withReuseIdentifier: LettersCell.identifier,
+                                                                     for: indexPath) as? LettersCell {
             
             let data = smallletterImages[indexPath.row]
-            SmallLettersCell.configureCell(img: data.image)
+            smallLettersCell.configureCell(img: data.image)
             
-            return SmallLettersCell
+            return smallLettersCell
         }
         return UICollectionViewCell()
     }
@@ -86,8 +88,8 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
 }
 
-//MARK: - Animation Methods
-//MARK: -
+// MARK: - Animation Methods
+// MARK: -
 extension CollLetters {
     
     // Animate Selected Letter accrording to Selection / Tap count
