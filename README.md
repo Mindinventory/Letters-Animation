@@ -24,7 +24,7 @@
 - [License](#license)
  
 ## Description
-Letters animation lets you allow to click on different letters and accrodingly it will animate letters in a cool way. It has very attractive ui and is very easy to use.
+Letters animation allows you to click on different letters and accrodingly it will animate letters in a cool way. It has very attractive ui and is very easy to use.
 
 - <b>Animation used</b>
 
