@@ -3,7 +3,7 @@
 <a href="https://docs.swift.org/swift-book/" style="pointer-events: stroke;" target="_blank">
 <img src="https://img.shields.io/badge/swift-5.0-brightgreen">
 </a>
-<a href="#" style="pointer-events: stroke;" target="_blank">
+<a href="https://developer.apple.com/ios/" style="pointer-events: stroke;" target="_blank">
 <img src="https://img.shields.io/badge/platform-iOS-red">
 </a>
 <a href="https://github.com/ashishpatelmi/GenerateDynamicCustomForm/blob/main/LICENSE" style="pointer-events: stroke;" target="_blank">
