@@ -18,10 +18,10 @@
  
 ## Table of content :-
 
--  [Description](#description)
--  [How to add in your project](#how-to-add-in-your-project)
--  [Requirement](#requirement)
--  [License](#license)
+1.  [Description](#description)
+2.  [How to add in your project](#how-to-add-in-your-project)
+3.  [Requirement](#requirement)
+4.  [License](#license)
  
 ## Description
 Letters animation allows you to click on different letters and accrodingly it will animate letters in a cool way. It has very attractive ui and is very easy to use.
