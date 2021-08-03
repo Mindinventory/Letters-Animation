@@ -20,8 +20,8 @@ final class CollLetters: UICollectionView {
     }
 }
 
-//MARK:- Configure
-//MARK:-
+//MARK: - Configure
+//MARK: -
 extension CollLetters {
     
     private func configure() {
@@ -32,8 +32,8 @@ extension CollLetters {
     }
 }
 
-//MARK:- UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout Methods
-//MARK:-
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout Methods
+//MARK: -
 extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,8 +82,8 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
 }
 
-//MARK:- Animation Methods
-//MARK:-
+//MARK: - Animation Methods
+//MARK: -
 extension CollLetters {
     
     // Animate Selected Letter accrording to Selection / Tap count
@@ -100,33 +100,42 @@ extension CollLetters {
                     self.isUserInteractionEnabled = false
                     vocabLettersVC.lblLetterMeaning1.isHidden = true
                     vocabLettersVC.constLetterMeaning1Leading.constant = -380
-                    animateFirstLetter(vc: vocabLettersVC, frame: lettersCell.frame, image: image)
+                    animateFirstLetter(vcLetters: vocabLettersVC, frame: lettersCell.frame, image: image)
                     
                 } else {
                     
                     self.isUserInteractionEnabled = false
                     vocabLettersVC.lblLetterMeaning2.isHidden = true
                     vocabLettersVC.constLetterMeaning2Leading.constant = -380
-                    animateSecondLetter(vc: vocabLettersVC, frame: lettersCell.frame, image: image)
+                    animateSecondLetter(vcLetters: vocabLettersVC, frame: lettersCell.frame, image: image)
                 }
             }
         }
     }
     
     // Animate First Letter
-    private func animateFirstLetter(vc: LettersVC, frame: CGRect, image: UIImage) {
+    private func animateFirstLetter(vcLetters: LettersVC, frame: CGRect, image: UIImage) {
         
-        animateViews(vwAnimate: vc.vwAnimate1, fromVw: vc.vw2, vcView: vc.view, vwSmallLettersMatching: vc.vwSmallLettersMatching, imgBigLetter: vc.imgBigLetter1, image: image, lblLetterMeaning: vc.lblLetterMeaning1, frameToConvert: frame, constLetterMeaningLeading: vc.constLetterMeaning1Leading)
+        animateViews(vwAnimate: vcLetters.vwAnimate1, fromVw: vcLetters.vw2, vcView: vcLetters.view,
+                     vwSmallLettersMatching: vcLetters.vwSmallLettersMatching, imgBigLetter: vcLetters.imgBigLetter1,
+                     image: image, lblLetterMeaning: vcLetters.lblLetterMeaning1, frameToConvert: frame,
+                     constLetterMeaningLeading: vcLetters.constLetterMeaning1Leading)
     }
     
     // Animate Second Letter
-    private func animateSecondLetter(vc: LettersVC, frame: CGRect, image: UIImage) {
+    private func animateSecondLetter(vcLetters: LettersVC, frame: CGRect, image: UIImage) {
         
-        animateViews(vwAnimate: vc.vwAnimate2, fromVw: vc.vw2, vcView: vc.view, vwSmallLettersMatching: vc.vwSmallLettersMatching, imgBigLetter: vc.imgBigLetter2, image: image, lblLetterMeaning: vc.lblLetterMeaning2, frameToConvert: frame, constLetterMeaningLeading: vc.constLetterMeaning2Leading)
+        animateViews(vwAnimate: vcLetters.vwAnimate2, fromVw: vcLetters.vw2, vcView: vcLetters.view,
+                     vwSmallLettersMatching: vcLetters.vwSmallLettersMatching, imgBigLetter: vcLetters.imgBigLetter2,
+                     image: image, lblLetterMeaning: vcLetters.lblLetterMeaning2, frameToConvert: frame,
+                     constLetterMeaningLeading: vcLetters.constLetterMeaning2Leading)
     }
     
     // Animation
-    private func animateViews(vwAnimate: UIView, fromVw: UIView, vcView: UIView, vwSmallLettersMatching: UIView, imgBigLetter: UIImageView, image: UIImage, lblLetterMeaning: UILabel, frameToConvert: CGRect, constLetterMeaningLeading: NSLayoutConstraint) {
+    private func animateViews(vwAnimate: UIView, fromVw: UIView, vcView: UIView,
+                              vwSmallLettersMatching: UIView, imgBigLetter: UIImageView,
+                              image: UIImage, lblLetterMeaning: UILabel, frameToConvert: CGRect,
+                              constLetterMeaningLeading: NSLayoutConstraint) {
         
         // Initial setup before animation
         vwAnimate.isHidden = false

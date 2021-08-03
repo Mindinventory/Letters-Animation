@@ -7,8 +7,8 @@
 
 import UIKit
 
-//MARK:- Home
-//MARK:-
+//MARK: - Home
+//MARK: -
 struct HomeCollection {
     
     let image: UIImage
@@ -26,8 +26,8 @@ enum HomeSelection: String {
     case settings = "Settings"
 }
 
-//MARK:- Letters
-//MARK:-
+//MARK: - Letters
+//MARK: -
 struct SmallLetters {
     let image: UIImage
 }

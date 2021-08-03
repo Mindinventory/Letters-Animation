@@ -25,8 +25,8 @@ final class HomeCell: UICollectionViewCell, CAAnimationDelegate {
     }
 }
 
-//MARK:- Configure
-//MARK:-
+//MARK: - Configure
+//MARK: -
 extension HomeCell {
     
     func configureCell(img: UIImage, title: String, subTitle: String) {

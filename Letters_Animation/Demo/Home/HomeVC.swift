@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeVC: UIViewController {
     
-    //MARK: IBOutlets
+    //MARK:... IBOutlets
     @IBOutlet weak private var imgProfile: UIImageView!
     @IBOutlet weak private var btnMenu: UIButton!
     @IBOutlet weak private var stackTopBtns: UIStackView!
@@ -17,18 +17,24 @@ final class HomeVC: UIViewController {
     @IBOutlet weak private var btnSearch: UIButton!
     @IBOutlet weak private var lblName: UILabel!
     @IBOutlet weak private var lblHello: UILabel!
-    @IBOutlet weak private var collHome: CollHome!
+    @IBOutlet weak var collHome: CollHome!
     @IBOutlet weak private var conststackTopbtnsTop: NSLayoutConstraint!
     @IBOutlet weak private var constImgProfileTop: NSLayoutConstraint!
     @IBOutlet weak private var constCollHomeTop: NSLayoutConstraint!
     
-    //MARK: Properties
-    private let homeData = [HomeCollection(image: UIImage(named: "ic_numbers") ?? UIImage(), title: "Numbers", subTitle: "(números)"),
-                            HomeCollection(image: UIImage(named: "ic_book") ?? UIImage(), title: "Reading", subTitle: "(Leer)"),
-                            HomeCollection(image: UIImage(named: "ic_shpaes") ?? UIImage(), title: "Shapes", subTitle: "(Formas)"),
-                            HomeCollection(image: UIImage(named: "ic_abc") ?? UIImage(), title: "Vocab & Letters", subTitle: "(Vocabulario & Letras)"),
-                            HomeCollection(image: UIImage(named: "ic_analysis") ?? UIImage(), title: "Learning Analysis", subTitle: "(análisis de aprendizaje)"),
-                            HomeCollection(image: UIImage(named: "ic_settings") ?? UIImage(), title: "Settings", subTitle: "(Ajustes de aplicación)")]
+    //MARK:... Properties
+    let homeData = [HomeCollection(image: UIImage(named: "ic_numbers") ?? UIImage(), title: "Numbers",
+                                   subTitle: "(números)"),
+                            HomeCollection(image: UIImage(named: "ic_book") ?? UIImage(), title: "Reading",
+                                           subTitle: "(Leer)"),
+                            HomeCollection(image: UIImage(named: "ic_shpaes") ?? UIImage(), title: "Shapes",
+                                           subTitle: "(Formas)"),
+                            HomeCollection(image: UIImage(named: "ic_abc") ?? UIImage(), title: "Vocab & Letters",
+                                           subTitle: "(Vocabulario & Letras)"),
+                            HomeCollection(image: UIImage(named: "ic_analysis") ?? UIImage(), title: "Learning Analysis",
+                                           subTitle: "(análisis de aprendizaje)"),
+                            HomeCollection(image: UIImage(named: "ic_settings") ?? UIImage(), title: "Settings",
+                                           subTitle: "(Ajustes de aplicación)")]
     
     //MARK: View LifeCycle methods
     override func viewDidLoad() {
@@ -38,7 +44,7 @@ final class HomeVC: UIViewController {
         
         CMainThread.asyncAfter(deadline: .now() + 0.1, execute: {
             
-            self.animateViews(stackTopBtns: self.stackTopBtns, stackLblNames: self.stackLblNames, imgProfile: self.imgProfile, collHome: self.collHome, constImgProfileTop: self.constImgProfileTop, conststackTopbtnsTop: self.conststackTopbtnsTop, homeData: self.homeData)
+            self.animateViews(stackTopBtns: self.stackTopBtns, stackLblNames: self.stackLblNames, imgProfile: self.imgProfile, constImgProfileTop: self.constImgProfileTop, conststackTopbtnsTop: self.conststackTopbtnsTop)
         })
     }
     
@@ -49,8 +55,8 @@ final class HomeVC: UIViewController {
     }
 }
 
-//MARK:- Configure
-//MARK:-
+//MARK: - Configure
+//MARK: -
 extension HomeVC {
     
     private func configure() {

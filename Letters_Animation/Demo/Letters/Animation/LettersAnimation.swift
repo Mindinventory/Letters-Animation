@@ -9,7 +9,8 @@ import UIKit
 
 extension LettersVC {
     
-    func animateViews(btnBack: UIButton, lblSmallLetters: UILabel, lblMatch: UILabel, constBtnBackTop: NSLayoutConstraint, constCollSmallLettersTop: NSLayoutConstraint, constCollSmallLettersBottom: NSLayoutConstraint, collSmallLetters: CollLetters, lettersData: [SmallLetters]) {
+    func animateViews(btnBack: UIButton, lblSmallLetters: UILabel, lblMatch: UILabel, constBtnBackTop: NSLayoutConstraint,
+                      constCollSmallLettersTop:NSLayoutConstraint, constCollSmallLettersBottom: NSLayoutConstraint) {
         
         UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseInOut, animations: { [weak self] in
             
@@ -24,18 +25,20 @@ extension LettersVC {
             
             self.view.layoutIfNeeded()
             
-            self.animateSmallLettersCollectionView(collSmallLetters: collSmallLetters, lettersData: lettersData)
+            self.animateSmallLettersCollectionView()
             
         }, completion: nil)
     }
     
     // Animate and reload CollectionView
-    func animateSmallLettersCollectionView(collSmallLetters: CollLetters, lettersData: [SmallLetters]) {
+    func animateSmallLettersCollectionView() {
         
-        UIView.animate(withDuration: 1, delay: 0.2, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.2, options: .curveEaseInOut, animations: { [weak self] in
             
-            collSmallLetters.smallletterImages = lettersData
-            collSmallLetters.reloadData()
+            guard let `self` = self else { return }
+            
+            self.collSmallLetters.smallletterImages = self.smallLettersData
+            self.collSmallLetters.reloadData()
             
         }, completion: nil)
     }

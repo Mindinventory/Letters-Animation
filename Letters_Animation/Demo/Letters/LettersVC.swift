@@ -21,7 +21,7 @@ final class LettersVC: UIViewController {
     @IBOutlet weak private var btnBack: UIButton!
     @IBOutlet weak private var lblSmallLetters: UILabel!
     @IBOutlet weak private var lblMatch: UILabel!
-    @IBOutlet weak private var collSmallLetters: CollLetters!
+    @IBOutlet weak var collSmallLetters: CollLetters!
     @IBOutlet weak private var constCollSmallLettersTop: NSLayoutConstraint!
     @IBOutlet weak private var constBtnBackLeading: NSLayoutConstraint!
     @IBOutlet weak private var constBtnBackTop: NSLayoutConstraint!
@@ -31,8 +31,32 @@ final class LettersVC: UIViewController {
     @IBOutlet weak var constLetterMeaning1Leading: NSLayoutConstraint!
     
     //MARK: Properties
-    private let smallLettersData = [SmallLetters(image: UIImage(named: "ic_bigA") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallB") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallC") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallD") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_BigE") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallF") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallG") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallH") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallI") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallJ") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallK") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallL") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallM") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallN") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallO") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallP") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallQ") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallR") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallS") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallT") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallU") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallV") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallW") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallX") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallY") ?? UIImage()), SmallLetters(image: UIImage(named: "ic_smallZ") ?? UIImage())]
-    
+    let smallLettersData = [SmallLetters(image: UIImage(named: "ic_bigA") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallB") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallC") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallD") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_BigE") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallF") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallG") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallH") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallI") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallJ") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallK") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallL") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallM") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallN") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallO") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallP") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallQ") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallR") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallS") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallT") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallU") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallV") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallW") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallX") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallY") ?? UIImage()),
+                                    SmallLetters(image: UIImage(named: "ic_smallZ") ?? UIImage())]
     
     //MARK: ViewLifeCycle Methods
     override func viewDidLoad() {
@@ -43,8 +67,8 @@ final class LettersVC: UIViewController {
     }
 }
 
-//MARK:- Configure
-//MARK:-
+//MARK: - Configure
+//MARK: -
 extension LettersVC {
     
     // Configure Views
@@ -68,7 +92,9 @@ extension LettersVC {
         
         CMainThread.asyncAfter(deadline: .now() + 0.1, execute: {
             
-            self.animateViews(btnBack: self.btnBack, lblSmallLetters: self.lblSmallLetters, lblMatch: self.lblMatch, constBtnBackTop: self.constBtnBackTop, constCollSmallLettersTop: self.constCollSmallLettersTop, constCollSmallLettersBottom: self.constCollSmallLettersBottom, collSmallLetters: self.collSmallLetters, lettersData: self.smallLettersData)
+            self.animateViews(btnBack: self.btnBack, lblSmallLetters: self.lblSmallLetters, lblMatch: self.lblMatch,
+                              constBtnBackTop: self.constBtnBackTop, constCollSmallLettersTop: self.constCollSmallLettersTop,
+                              constCollSmallLettersBottom: self.constCollSmallLettersBottom)
         })
     }
     
@@ -83,16 +109,22 @@ extension LettersVC {
     private func setAttributedTextOnLables() {
         
         let attrStr1 = NSMutableAttributedString(string: lblLetterMeaning1.text ?? "")
-        attrStr1.addAttribute(.foregroundColor, value: UIColor.init(red: 255/255, green: 111/255, blue: 77/255, alpha: 1), range: NSRange(location: 1, length: 1))
-        attrStr1.addAttribute(.foregroundColor, value: UIColor.init(red: 255/255, green: 179/255, blue: 87/255, alpha: 1), range: NSRange(location: 5, length: 3))
-        attrStr1.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414), weight: .black), range: NSRange(location: 1, length: 1))
+        attrStr1.addAttribute(.foregroundColor, value: UIColor.init(red: 255/255, green: 111/255,
+                                                                    blue: 77/255, alpha: 1), range: NSRange(location: 1, length: 1))
+        attrStr1.addAttribute(.foregroundColor, value: UIColor.init(red: 255/255, green: 179/255,
+                                                                    blue: 87/255, alpha: 1), range: NSRange(location: 5, length: 3))
+        attrStr1.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414),
+                                                              weight: .black), range: NSRange(location: 1, length: 1))
         
         lblLetterMeaning1.attributedText = attrStr1
         
         let attrStr2 = NSMutableAttributedString(string: lblLetterMeaning2.text ?? "")
-        attrStr2.addAttribute(.foregroundColor, value: UIColor.init(red: 151/255, green: 107/255, blue: 207/255, alpha: 1), range: NSRange(location: 1, length: 1))
-        attrStr2.addAttribute(.foregroundColor, value: UIColor.init(red: 234/255, green: 91/255, blue: 112/255, alpha: 1), range: NSRange(location: 5, length: 3))
-        attrStr2.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414), weight: .black), range: NSRange(location: 1, length: 1))
+        attrStr2.addAttribute(.foregroundColor, value: UIColor.init(red: 151/255, green: 107/255,
+                                                                    blue: 207/255, alpha: 1), range: NSRange(location: 1, length: 1))
+        attrStr2.addAttribute(.foregroundColor, value: UIColor.init(red: 234/255, green: 91/255,
+                                                                    blue: 112/255, alpha: 1), range: NSRange(location: 5, length: 3))
+        attrStr2.addAttribute(.font, value: UIFont.systemFont(ofSize: CScreenWidth * (30/414),
+                                                              weight: .black), range: NSRange(location: 1, length: 1))
         
         lblLetterMeaning2.attributedText = attrStr2
     }
@@ -106,8 +138,8 @@ extension LettersVC {
     }
 }
 
-//MARK:- Button's Actions
-//MARK:-
+//MARK: - Button's Actions
+//MARK: -
 extension LettersVC {
     
     @IBAction private func onBack(_ sender: UIButton) {

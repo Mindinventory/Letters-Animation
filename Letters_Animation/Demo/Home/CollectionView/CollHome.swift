@@ -25,8 +25,8 @@ final class CollHome: UICollectionView {
     }
 }
 
-//MARK:- Configure
-//MARK:-
+//MARK: - Configure
+//MARK: -
 extension CollHome {
     
     private func configure() {
@@ -37,8 +37,8 @@ extension CollHome {
     }
 }
 
-//MARK:- UICollectionView DataSource and Delegate Methods.
-//MARK:-
+//MARK: - UICollectionView DataSource and Delegate Methods.
+//MARK: -
 extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,7 +58,8 @@ extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         
         cell.setAlphaValue(alpha: 0.0)
         cell.transform = CGAffineTransform(translationX: 0, y: 300)
@@ -89,24 +90,27 @@ extension CollHome: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     }
     
     //MARK: Flow Layout Delegate Methods
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: CScreenWidth * (177/414) - 12, height: CScreenWidth * (200/414))
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
         return 6
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 15
     }
 }
 
-//MARK:- Helper / Navigation Methods
-//MARK:-
+//MARK: - Helper / Navigation Methods
+//MARK: -
 extension CollHome {
     
     private func checkSelectedCell(lbltext: String, homeCell: HomeCell, row: Int) {
@@ -123,7 +127,7 @@ extension CollHome {
             return
             
         case .letters:
-            configureSelectedCell(identifier: .LettersVC, homeCell: homeCell, img: images[row] ?? UIImage())
+            configureSelectedCell(identifier: .lettersVC, homeCell: homeCell, img: images[row] ?? UIImage())
             
         case .learningAnalysis:
             return

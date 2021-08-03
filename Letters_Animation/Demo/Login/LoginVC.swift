@@ -31,8 +31,8 @@ final class LoginVC: UIViewController {
     }
 }
 
-//MARK:- Configure
-//MARK:-
+//MARK: - Configure
+//MARK: -
 extension LoginVC {
     
     private func configure() {
@@ -73,13 +73,13 @@ extension LoginVC {
     }
 }
 
-//MARK:- Button's Actions
-//MARK:-
+//MARK: - Button's Actions
+//MARK: -
 extension LoginVC {
     
     @IBAction private func onBtnGo(_ sender: UIButton) {
         
-        let homeVC = CMainStoryboard.instantiateViewControllerWithIdentifier(identifier: .HomeVC)
+        let homeVC = CMainStoryboard.instantiateViewControllerWithIdentifier(identifier: .homeVC)
         navigationController?.pushViewController(homeVC, animated: true)
     }
 }
