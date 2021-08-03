@@ -41,9 +41,9 @@ Letters animation allows you to click on different letters and accrodingly it wi
 
 ## Requirement
 
--  Xcode 12 or later
--  Supports iOS 13 or later
--  Supports iPhone SE 1st Generation or later
+1.  Xcode 12 or later
+2.  Supports iOS 13 or later
+3.  Supports iPhone SE 1st Generation or later
 
 ## LICENSE
 
