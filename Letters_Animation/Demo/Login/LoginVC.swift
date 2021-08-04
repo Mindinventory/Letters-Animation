@@ -66,12 +66,7 @@ extension LoginVC {
 
     func setConstraintAccordingtoScreen() {
 
-        if isNotch {
-            constImgDinosaurBottom.constant = -16
-        } else {
-            constImgDinosaurBottom.constant = 0
-        }
-
+        constImgDinosaurBottom.constant = isNotch ? -16 : 0
         constStackViewTop.constant = CScreenWidth * (140/414)
         constStackVwHeight.constant = CScreenWidth * (300/414)
     }

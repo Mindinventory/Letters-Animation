@@ -91,7 +91,9 @@ extension LettersVC {
 
         CMainThread.asyncAfter(deadline: .now() + 0.1, execute: {
             self.animateViews(btnBack: self.btnBack, lblSmallLetters: self.lblSmallLetters,
-                              lblMatch: self.lblMatch, collSmallLettersBottom: self.constCollSmallLettersBottom, constraint: (btnBackTop: self.constBtnBackTop, collSmallLettersTop: self.constCollSmallLettersTop))
+                              lblMatch: self.lblMatch, collSmallLettersBottom: self.constCollSmallLettersBottom,
+                              constraint: (btnBackTop: self.constBtnBackTop,
+                                           collSmallLettersTop: self.constCollSmallLettersTop))
         })
     }
 

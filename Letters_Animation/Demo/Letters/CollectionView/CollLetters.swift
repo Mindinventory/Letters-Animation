@@ -10,9 +10,9 @@ import UIKit
 final class CollLetters: UICollectionView {
 
     var smallletterImages = [SmallLetters]()
-    
+
     private var tapCount = 0
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
@@ -36,7 +36,7 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return smallletterImages.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -48,13 +48,13 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         }
         return UICollectionViewCell()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         tapCount += 1
         animateSelectedLetter(indexpath: indexPath)
     }
     
-    // MARK: - FlowLayout Methods
+    // MARK: - FlowLayout Methods 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (CScreenWidth * (148/414) / 2) - 38
@@ -79,10 +79,10 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
 
 // MARK: - Animation Methods -
 extension CollLetters {
-    
+
     // Animate Selected Letter accrording to Selection / Tap count
     private func animateSelectedLetter(indexpath: IndexPath) {
-        
+
         let image = smallletterImages[indexpath.row].image
         if let lettersCell = self.cellForItem(at: indexpath) as? LettersCell {
             if let vocabLettersVC = UIApplication.topViewController() as? LettersVC {
@@ -104,33 +104,36 @@ extension CollLetters {
     
     // Animate First Letter
     private func animateFirstLetter(vcLetters: LettersVC, frame: CGRect, image: UIImage) {
-        
-        animateViews(views: (animate: vcLetters.vwAnimate1, fromVw: vcLetters.vw2, vcView: vcLetters.view,
-                             smallLettersMatching: vcLetters.vwSmallLettersMatching),
-                     imgBigLetter: vcLetters.imgBigLetter1, image: image,
-                     lblLetterMeaning: vcLetters.lblLetterMeaning1, frameToConvert: frame, constLetterMeaningLeading: vcLetters.constLetterMeaning1Leading)
+
+        animateViews(views: (animate: vcLetters.vwAnimate1, fromVw: vcLetters.vw2),
+                     views2: (vcLetters.view, smallLettersMatching: vcLetters.vwSmallLettersMatching),
+                     imgs: (imgBigLetter: vcLetters.imgBigLetter1, image: image),
+                     lbls: (lblLetterMeaning: vcLetters.lblLetterMeaning1,
+                            vcLetters.constLetterMeaning1Leading), frameToConvert: frame)
     }
     
     // Animate Second Letter
     private func animateSecondLetter(vcLetters: LettersVC, frame: CGRect, image: UIImage) {
-        
-        animateViews(views: (animate: vcLetters.vwAnimate2, fromVw: vcLetters.vw2, vcView: vcLetters.view,
-                             smallLettersMatching: vcLetters.vwSmallLettersMatching),
-                     imgBigLetter: vcLetters.imgBigLetter2, image: image,
-                     lblLetterMeaning: vcLetters.lblLetterMeaning2, frameToConvert: frame, constLetterMeaningLeading: vcLetters.constLetterMeaning2Leading)
+
+        animateViews(views: (animate: vcLetters.vwAnimate2, fromVw: vcLetters.vw2),
+                     views2: (vcLetters.view, smallLettersMatching: vcLetters.vwSmallLettersMatching),
+                     imgs: (imgBigLetter: vcLetters.imgBigLetter2, image: image),
+                     lbls: (lblLetterMeaning: vcLetters.lblLetterMeaning2,
+                            vcLetters.constLetterMeaning2Leading), frameToConvert: frame)
     }
     
     // Animation
-    private func animateViews(views: (animate: UIView, fromVw: UIView, vcView: UIView,
-                                      smallLettersMatching: UIView), imgBigLetter: UIImageView,
-                              image: UIImage, lblLetterMeaning: UILabel, frameToConvert: CGRect,
-                              constLetterMeaningLeading: NSLayoutConstraint) {
+    private func animateViews(views: (animate: UIView, fromVw: UIView),
+                              views2: (vcView: UIView, smallLettersMatching: UIView),
+                              imgs: (imgBigLetter: UIImageView, image: UIImage),
+                              lbls: (lblLetterMeaning: UILabel, constLetterMeaningLeading: NSLayoutConstraint),
+                              frameToConvert: CGRect) {
         
         // Initial setup before animation
         views.animate.isHidden = false
-        imgBigLetter.isHidden = true
+        imgs.imgBigLetter.isHidden = true
         
-        let imgView = UIImageView(image: image)
+        let imgView = UIImageView(image: imgs.image)
         
         views.animate.frame = self.superview?.convert(frameToConvert, from: self) ?? CGRect()
         imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
@@ -138,24 +141,61 @@ extension CollLetters {
         
         // Start animation
         UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut, animations: {
-            views.animate.frame = views.smallLettersMatching.superview?.convert(imgBigLetter.frame, from: views.fromVw) ?? CGRect()
+            views.animate.frame = views2.smallLettersMatching.superview?.convert(imgs.imgBigLetter.frame, from: views.fromVw) ?? CGRect()
             imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
-            views.vcView.layoutIfNeeded()
+            views2.vcView.layoutIfNeeded()
         }, completion: { _ in
             
             // On Completion
-            lblLetterMeaning.isHidden = false
-            imgBigLetter.isHidden = false
-            imgBigLetter.image = imgView.image
+            lbls.lblLetterMeaning.isHidden = false
+            imgs.imgBigLetter.isHidden = false
+            imgs.imgBigLetter.image = imgView.image
             views.animate.subviews.forEach { $0.removeFromSuperview() }
             views.animate.isHidden = true
             
             UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
-                constLetterMeaningLeading.constant = 3
-                views.vcView.layoutIfNeeded()
+                lbls.constLetterMeaningLeading.constant = 3
+                views2.vcView.layoutIfNeeded()
             }, completion: { [weak self] _ in
                 self?.isUserInteractionEnabled = true
             })
         })
     }
+    //    private func animateViews(views: (animate: UIView, fromVw: UIView, vcView: UIView,
+    //                                      smallLettersMatching: UIView), imgBigLetter: UIImageView,
+    //                              image: UIImage, lblLetterMeaning: UILabel, frameToConvert: CGRect,
+    //                              constLetterMeaningLeading: NSLayoutConstraint) {
+    //
+    //        // Initial setup before animation
+    //        views.animate.isHidden = false
+    //        imgBigLetter.isHidden = true
+    //
+    //        let imgView = UIImageView(image: image)
+    //
+    //        views.animate.frame = self.superview?.convert(frameToConvert, from: self) ?? CGRect()
+    //        imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
+    //        views.animate.addSubview(imgView)
+    //
+    //        // Start animation
+    //        UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut, animations: {
+    //            views.animate.frame = views.smallLettersMatching.superview?.convert(imgBigLetter.frame, from: views.fromVw) ?? CGRect()
+    //            imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
+    //            views.vcView.layoutIfNeeded()
+    //        }, completion: { _ in
+    //
+    //            // On Completion
+    //            lblLetterMeaning.isHidden = false
+    //            imgBigLetter.isHidden = false
+    //            imgBigLetter.image = imgView.image
+    //            views.animate.subviews.forEach { $0.removeFromSuperview() }
+    //            views.animate.isHidden = true
+    //
+    //            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+    //                constLetterMeaningLeading.constant = 3
+    //                views.vcView.layoutIfNeeded()
+    //            }, completion: { [weak self] _ in
+    //                self?.isUserInteractionEnabled = true
+    //            })
+    //        })
+    //    }
 }
