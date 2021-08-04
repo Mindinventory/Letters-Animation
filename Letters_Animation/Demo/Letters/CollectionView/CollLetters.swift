@@ -53,24 +53,24 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         tapCount += 1
         animateSelectedLetter(indexpath: indexPath)
     }
-    
+
     // MARK: - FlowLayout Methods 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (CScreenWidth * (148/414) / 2) - 38
         return CGSize(width: size, height: size)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 14
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 29
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 22, left: 24, bottom: 18, right: 24)
@@ -91,7 +91,7 @@ extension CollLetters {
                     vocabLettersVC.lblLetterMeaning1.isHidden = true
                     vocabLettersVC.constLetterMeaning1Leading.constant = -380
                     animateFirstLetter(vcLetters: vocabLettersVC, frame: lettersCell.frame, image: image)
-                    
+
                 } else {
                     self.isUserInteractionEnabled = false
                     vocabLettersVC.lblLetterMeaning2.isHidden = true
@@ -101,7 +101,7 @@ extension CollLetters {
             }
         }
     }
-    
+
     // Animate First Letter
     private func animateFirstLetter(vcLetters: LettersVC, frame: CGRect, image: UIImage) {
 
@@ -111,7 +111,7 @@ extension CollLetters {
                      lbls: (lblLetterMeaning: vcLetters.lblLetterMeaning1,
                             vcLetters.constLetterMeaning1Leading), frameToConvert: frame)
     }
-    
+
     // Animate Second Letter
     private func animateSecondLetter(vcLetters: LettersVC, frame: CGRect, image: UIImage) {
 
@@ -121,25 +121,25 @@ extension CollLetters {
                      lbls: (lblLetterMeaning: vcLetters.lblLetterMeaning2,
                             vcLetters.constLetterMeaning2Leading), frameToConvert: frame)
     }
-    
+
     // Animation
     private func animateViews(views: (animate: UIView, fromVw: UIView),
                               views2: (vcView: UIView, smallLettersMatching: UIView),
                               imgs: (imgBigLetter: UIImageView, image: UIImage),
                               lbls: (lblLetterMeaning: UILabel, constLetterMeaningLeading: NSLayoutConstraint),
                               frameToConvert: CGRect) {
-        
+
         // Initial setup before animation
         views.animate.isHidden = false
         imgs.imgBigLetter.isHidden = true
-        
+
         let imgView = UIImageView(image: imgs.image)
-        
+
         views.animate.frame = self.superview?.convert(frameToConvert, from: self) ?? CGRect()
         imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width,
                                height: views.animate.frame.height)
         views.animate.addSubview(imgView)
-        
+
         // Start animation
         UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut, animations: {
             views.animate.frame = views2.smallLettersMatching.superview?.convert(imgs.imgBigLetter.frame,
@@ -148,14 +148,14 @@ extension CollLetters {
                                    height: views.animate.frame.height)
             views2.vcView.layoutIfNeeded()
         }, completion: { _ in
-            
+
             // On Completion
             lbls.lblLetterMeaning.isHidden = false
             imgs.imgBigLetter.isHidden = false
             imgs.imgBigLetter.image = imgView.image
             views.animate.subviews.forEach { $0.removeFromSuperview() }
             views.animate.isHidden = true
-            
+
             UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
                 lbls.constLetterMeaningLeading.constant = 3
                 views2.vcView.layoutIfNeeded()
