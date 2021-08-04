@@ -23,7 +23,7 @@ final class CollLetters: UICollectionView {
 extension CollLetters {
 
     private func configure() {
-        
+
         dataSource = self
         delegate = self
         register(LettersCell.nib, forCellWithReuseIdentifier: LettersCell.identifier)
@@ -136,13 +136,16 @@ extension CollLetters {
         let imgView = UIImageView(image: imgs.image)
         
         views.animate.frame = self.superview?.convert(frameToConvert, from: self) ?? CGRect()
-        imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
+        imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width,
+                               height: views.animate.frame.height)
         views.animate.addSubview(imgView)
         
         // Start animation
         UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut, animations: {
-            views.animate.frame = views2.smallLettersMatching.superview?.convert(imgs.imgBigLetter.frame, from: views.fromVw) ?? CGRect()
-            imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
+            views.animate.frame = views2.smallLettersMatching.superview?.convert(imgs.imgBigLetter.frame,
+                                                                                 from: views.fromVw) ?? CGRect()
+            imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width,
+                                   height: views.animate.frame.height)
             views2.vcView.layoutIfNeeded()
         }, completion: { _ in
             
@@ -161,41 +164,4 @@ extension CollLetters {
             })
         })
     }
-    //    private func animateViews(views: (animate: UIView, fromVw: UIView, vcView: UIView,
-    //                                      smallLettersMatching: UIView), imgBigLetter: UIImageView,
-    //                              image: UIImage, lblLetterMeaning: UILabel, frameToConvert: CGRect,
-    //                              constLetterMeaningLeading: NSLayoutConstraint) {
-    //
-    //        // Initial setup before animation
-    //        views.animate.isHidden = false
-    //        imgBigLetter.isHidden = true
-    //
-    //        let imgView = UIImageView(image: image)
-    //
-    //        views.animate.frame = self.superview?.convert(frameToConvert, from: self) ?? CGRect()
-    //        imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
-    //        views.animate.addSubview(imgView)
-    //
-    //        // Start animation
-    //        UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut, animations: {
-    //            views.animate.frame = views.smallLettersMatching.superview?.convert(imgBigLetter.frame, from: views.fromVw) ?? CGRect()
-    //            imgView.frame = CGRect(x: 0, y: 0, width: views.animate.frame.width, height: views.animate.frame.height)
-    //            views.vcView.layoutIfNeeded()
-    //        }, completion: { _ in
-    //
-    //            // On Completion
-    //            lblLetterMeaning.isHidden = false
-    //            imgBigLetter.isHidden = false
-    //            imgBigLetter.image = imgView.image
-    //            views.animate.subviews.forEach { $0.removeFromSuperview() }
-    //            views.animate.isHidden = true
-    //
-    //            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
-    //                constLetterMeaningLeading.constant = 3
-    //                views.vcView.layoutIfNeeded()
-    //            }, completion: { [weak self] _ in
-    //                self?.isUserInteractionEnabled = true
-    //            })
-    //        })
-    //    }
 }
