@@ -39,7 +39,7 @@ extension CollLetters: UICollectionViewDataSource, UICollectionViewDelegate, UIC
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         if let smallLettersCell = collectionView.dequeueReusableCell(withReuseIdentifier: LettersCell.identifier,
                                                                      for: indexPath) as? LettersCell {
             let data = smallletterImages[indexPath.row]
